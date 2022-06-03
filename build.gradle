@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'name.gavin'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'junit:junit:4.13.2'
+    implementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
