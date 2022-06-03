@@ -7,7 +7,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CyclicRotation {
+public class CyclicRotationTest {
 
 
     @Test

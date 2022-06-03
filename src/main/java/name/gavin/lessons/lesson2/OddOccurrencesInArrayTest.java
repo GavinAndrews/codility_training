@@ -10,11 +10,11 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class OddOccurrencesInArray {
+public class OddOccurrencesInArrayTest {
 
     public int solution(int[] A) {
 
-        Set<Integer> misMatched = new HashSet();
+        Set<Integer> misMatched = new HashSet<>();
 
         for (int i : A) {
             if (misMatched.contains(i)) {
@@ -27,8 +27,7 @@ public class OddOccurrencesInArray {
 
         assert(misMatched.size()==1);
 
-        int r = (int) misMatched.toArray()[0];
-        return r;
+        return (int) misMatched.toArray()[0];
     }
 
     @Test
