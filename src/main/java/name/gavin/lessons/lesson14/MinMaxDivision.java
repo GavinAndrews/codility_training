@@ -17,11 +17,11 @@ public class MinMaxDivision {
         int lower = 0;
         int higher = M*A.length;
 
-        while (higher-lower > 0) {
-            int guess = (higher - lower) / 2 + lower;
+        while (higher != lower) {
+
+            int guess = (higher + lower) / 2;
 
             boolean isDoable = check_doable(A, K, guess);
-
             if (isDoable) {
                 higher = guess;
             }
