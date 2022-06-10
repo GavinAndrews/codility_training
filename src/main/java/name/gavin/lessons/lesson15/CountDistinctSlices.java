@@ -58,4 +58,21 @@ public class CountDistinctSlices {
         int r = solution(M, A);
         assertEquals("Test", 9, r);
     }
+
+
+    @Test
+    public void testSimple2() {
+
+        int M = 1;
+
+        int[] A = new int[5];
+        A[0] = 1;
+        A[1] = 1;
+        A[2] = 1;
+        A[3] = 1;
+        A[4] = 1;
+
+        int r = solution(M, A);
+        assertEquals("Test", 5, r);
+    }
 }
