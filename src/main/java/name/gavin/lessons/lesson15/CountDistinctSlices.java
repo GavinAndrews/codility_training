@@ -11,36 +11,36 @@ public class CountDistinctSlices {
 
     public int solution(int M, int[] A) {
 
-        if (A.length < 2) return A.length;
+        if (A.length == 0) return 0;
+        if (A.length == 1) return 1;
 
-        // Condition... each element of array A is an integer within the range [0..M].
-        boolean[] found = new boolean[M+1];
 
-        int total = 0;
-        int front = 0;
-        for (int back=0; back<A.length; back++) {
-            while (front < A.length && validRangeIfIncluding(found, A[front])) {
-                extend(found, A[front]);
-                front++;
+        int[] count = new int[M+1];  // elements range 0...M
+        int head = 0;
+        int tail = 0;
+        int found = 1;
+
+        count[A[0]]++;
+
+        do {
+            // Advance Head if possible...
+            if (head < A.length-1) {
+                if (count[A[head+1]]<1) {
+                    head++;
+                    count[A[head]]++;
+                    found++;
+                    continue;
+                }
             }
-            shrink(found, A[back]);
-            total += (front-back);
-            if (total >= 1000000000) return 1000000000;
-        }
 
-        return total;
-    }
+            count[A[tail]]--;
+            tail++;
 
-    boolean validRangeIfIncluding(boolean[] found, int extra) {
-        return !found[extra];
-    }
 
-    void extend(boolean[] found, int extra) {
-        found[extra] = true;
-    }
+        } while ((tail != head)||(tail != A.length-1));
 
-    void shrink(boolean[] found, int extra) {
-        found[extra] = false;
+        return found;
+
     }
 
     @Test
@@ -63,16 +63,13 @@ public class CountDistinctSlices {
     @Test
     public void testSimple2() {
 
-        int M = 1;
+        int M = 100000;
 
-        int[] A = new int[5];
+        int[] A = new int[2];
         A[0] = 1;
         A[1] = 1;
-        A[2] = 1;
-        A[3] = 1;
-        A[4] = 1;
 
         int r = solution(M, A);
-        assertEquals("Test", 5, r);
+        assertEquals("Test", 9, r);
     }
 }
